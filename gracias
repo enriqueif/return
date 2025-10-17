@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inscripción registrada — Federación</title>
+  <style>
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    body{
+      display:flex;align-items:center;justify-content:center;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      background-color:#0f172a; /* fallback */
+      color:#fff;
+    }
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45)}
+    .card{position:relative;z-index:2;max-width:920px;width:92%;padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(4px);}
+    .logos{display:flex;gap:20px;align-items:center;justify-content:center;margin-bottom:18px}
+    .logos img{max-height:78px;object-fit:contain}
+    h1{margin:8px 0 6px;font-size:28px;text-align:center}
+    p{margin:0 0 14px;text-align:center;font-size:16px;opacity:0.95}
+    .small{font-size:13px;opacity:0.8;text-align:center}
+    .btn{display:inline-block;margin:14px auto 0;padding:10px 16px;border-radius:8px;background:#ffffff; color:#0b1220;text-decoration:none;font-weight:600}
+    footer{margin-top:14px;text-align:center;font-size:12px;opacity:0.75}
+    .contacto{margin-top:12px;text-align:center;font-size:15px;opacity:0.9;font-weight:500}
+
+    /* responsive */
+    @media (max-width:520px){
+      .logos img{max-height:56px}
+      h1{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" aria-hidden="true"></div>
+  <main class="card" role="main" aria-labelledby="titulo">
+    <div class="logos" aria-hidden="false">
+      <img src="fgl.png" alt="Logo FGL" onerror="this.style.display='none'" />
+      <img src="fgsl.png" alt="Logo FGSL" onerror="this.style.display='none'" />
+    </div>
+
+    <h1 id="titulo">Su inscripción ha sido registrada</h1>
+    <p>Su inscripción fue recibida correctamente y será procesada por la organización.</p>
+    <p><strong>Muchas gracias.</strong></p>
+
+    <div style="text-align:center">
+      <a class="btn" href="#" onclick="window.close();return false;">Cerrar</a>
+    </div>
+
+    <footer class="small">Federación de Golf del Litoral</footer>
+    <div class="contacto">Consultas por Whatsapp a Secretaría Club Atlético Estudiantes - Sección Golf: <strong>3434578602</strong></div>
+  </main>
+
+  <script>
+    (function(){
+      try{
+        const params = new URLSearchParams(location.search);
+        const msg = params.get('msg');
+        if(msg){
+          document.getElementById('titulo').textContent = decodeURIComponent(msg);
+        }
+      }catch(e){/* silencioso */}
+    })();
+  </script>
+</body>
+</html>
